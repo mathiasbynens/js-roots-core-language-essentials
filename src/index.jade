@@ -1,0 +1,376 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title JavaScript Roots: Core Language Essentials
+
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans:300,600', rel='stylesheet', type='text/css')
+
+    // build:css styles/styles.css
+    link(rel='stylesheet', type='text/css', href='bower_components/prism/themes/prism-twilight.css')
+    link(rel='stylesheet', type='text/css', href='styles/main.css')
+    // endbuild
+
+  body
+
+    article
+
+      section.main
+        h1 JavaScript Roots
+          span Core Language Essentials
+        h3
+          a(href='https://twitter.com/bramus') @bramus
+        img.avatar.avatar--small(src='images/bramus.png')
+
+      section.light(data-bespoke-state='green')
+        h2 I. Variable types and values
+
+      section
+        pre.language-javascript
+          code.
+            var a;
+
+      section
+        pre.language-javascript
+          code.
+            var a;
+            console.log(a);
+
+      section
+        pre.language-javascript
+          code.
+            console.log(b);
+
+      section
+        pre.language-javascript
+          code.
+            var a = 3;
+            console.log(typeof a);
+
+      section
+        pre.language-javascript
+          code.
+            var b = "bramus";
+            console.log(typeof b);
+
+      section.conclusion(data-bespoke-state='blue')
+        h2 Essential #1
+        h1 JavaScript is dynamically typed
+
+      section
+        pre.language-javascript
+          code.
+            var c = 3;
+            c = "bramus";
+            console.log(typeof c);
+
+      section.conclusion(data-bespoke-state='blue')
+        h2 Essential #2
+        h1 JavaScript is weakly typed
+
+      section
+        h3 Side-effect
+        pre.language-javascript
+          code.
+            var d = 3 + "bramus";
+            console.log(d);
+        pre.language-javascript
+          code.
+            var d = 3 + "bramus";
+            console.log(typeof d);
+
+      section.conclusion(data-bespoke-state='blue')
+        h2 Essential #3
+        h1 Coercion is a feature
+
+      section
+        pre.language-javascript
+          code.
+            var a = "bramus";
+            console.log(typeof a);
+        pre.language-javascript
+          code.
+            var b = new String("bramus");
+            console.log(typeof b);
+
+      section.light.gif.gif--hmmz
+        h1 Hmmz&hellip;
+
+      section
+        pre.language-javascript
+          code.
+            var a = "bramus"; // string
+            console.log(a instanceof String);
+        pre.language-javascript
+          code.
+            var b = new String("bramus"); // object
+            console.log(b instanceof String);
+
+      section
+        h3.bullet <code>string</code> and <code>String</code> are not the same
+        ul
+          li <code>string</code> is a primitive type
+          li <code>String</code> is a non-primitive type
+
+      section.conclusion(data-bespoke-state='blue')
+        h2 Essential #4
+        h1 JavaScript supports primitives and non-primitives
+
+      section
+        h3.bullet primitives vs. non-primitives
+        .columns
+          .column.column-12.bullet
+            h4 primitives
+            ul
+              li “Just a value”
+          .column.column-12.bullet
+            h4 non-primitives
+            ul
+              li Contain “just a value”
+              li Provide properties and functions regarding that value
+
+      section
+        pre.language-javascript
+          code.
+            var b = new String("bramus");
+            console.log(b.length);
+        pre.language-javascript
+          code.
+            var b = new String("bramus");
+            console.log(b.toUpperCase());
+
+      section
+        pre.language-javascript
+          code.
+            var a = "bramus";
+            console.log(a.length);
+        pre.language-javascript
+          code.
+            var a = "bramus";
+            console.log(a.toUpperCase());
+
+      section.conclusion(data-bespoke-state='blue')
+        h2 (Again) Essential #3
+        h1 Coercion is a feature
+
+      section
+        h3.bullet JavaScript supported types
+        .columns
+          .column.column-12.bullet
+            h4 primitives
+            ul
+              li <code>string</code>
+              li <code>number</code>
+              li <code>boolean</code>
+              li <code>null</code>
+              li <code>undefined</code>
+          .column.column-12.bullet
+            h4 non-primitives
+            ul
+              li <code>String</code>
+              li <code>Number</code>
+              li <code>Boolean</code>
+              li <code>Array</code>
+              li <code>RegExp</code>
+              li <code>Function</code>
+              li <code>Object</code>
+
+      section
+        h3 All non-primitives extend <code>Object</code>
+        pre.language-javascript
+          code.
+            var b = new String("bramus");
+            console.log(b instanceof String);
+        pre.language-javascript
+          code.
+            var b = new String("bramus");
+            console.log(b instanceof Object);
+
+      section
+        h3 All non-primitives their type is <code>object</code> &hellip;
+        pre.language-javascript
+          code.
+            var b = new String("bramus");
+            console.log(typeof b);
+        pre.language-javascript
+          code.
+            var a = new Array("bramus","nostradamus");
+            console.log(typeof a);
+
+      section
+        h3 &hellip; except for <code>Function</code>
+        pre.language-javascript
+          code.
+            var f = function() { /* ... */ }
+            console.log(f instanceof Function);
+        pre.language-javascript
+          code.
+            var f = function() { /* ... */ }
+            console.log(f instanceof Object);
+        pre.language-javascript
+          code.
+            var f = function() { /* ... */ }
+            console.log(typeof f);
+        footer.bullet More on that later ;-)
+
+      section.light(data-bespoke-state='green')
+        h2 II. Using literals
+
+      section
+        pre.language-javascript
+          code.
+            // String Constructor
+            var firstName = new String('Forrest');
+
+            // String Literal
+            var firstName = 'Forrest';
+
+      section
+        pre.language-javascript
+          code.
+            // Number Constructor
+            var birthYear = new Number('1945');
+
+            // Number Literal
+            var birthYear = 1945;
+
+      section
+        pre.language-javascript
+          code.
+            // Boolean Constructor
+            var isRunning = new Boolean('false');
+
+            // Boolean Literal
+            var isRunning = true;
+
+      section
+        pre.language-javascript
+          code.
+            // RegExp Constructor
+            var hasR = new RegExp('r', 'i');
+
+            // RegExp Literal
+            var hasR = /r/i;
+
+      section
+        pre.language-javascript
+          code.
+            // Function Constructor
+            var says = new Function('sentence', 'alert(sentence)');
+
+            // Function Literal
+            var says = function(sentence) { alert(sentence); };
+
+            // Function statement
+            function says(sentence) { alert(sentence); };
+
+      section
+        pre.language-javascript
+          code.
+            // Array Constructor
+            var forrestFriends = new Array('Bubba', 'Lieutenant Dan');
+
+            // Array Literal
+            var forrestFriends = ['Bubba', 'Lieutenant Dan'];
+
+      section
+        pre.language-javascript
+          code.
+            // Object Constructor
+            var forrest = new Object();
+            forrest.firstName = 'Forrest';
+            forrest.lastName = 'Gump';
+
+            // Object Literal
+            var forrest = {
+              firstName : 'Forrest',
+              lastName : 'Gump'
+            };
+
+      section.light.gif.gif--sowhat
+        h1 so what?
+
+      section
+        pre.language-javascript
+          code.
+            // String Literal
+            var firstName = 'Forrest';
+            console.log(typeof firstName);
+        pre.language-javascript
+          code.
+            // String Literal
+            var firstName = 'Forrest';
+            console.log(firstName instanceof String);
+
+      section
+        pre.language-javascript
+          code.
+            // Array Literal
+            var forrestFriends = ['Bubba', 'Lieutenant Dan'];
+            console.log(typeof forrestFriends);
+        pre.language-javascript
+          code.
+            // Array Literal
+            var forrestFriends = ['Bubba', 'Lieutenant Dan'];
+            console.log(forrestFriends instanceof Array);
+
+      section.conclusion(data-bespoke-state='blue')
+        h2 Essential #5
+        h1.smaller When using literals, JavaScript will try and return the primitive variant
+
+      section.light(data-bespoke-state='green')
+        h2 III. Function arguments
+
+      section
+        h3 Passing non-primitives (1)
+        pre.language-javascript
+          code.
+            var change = function(obj) {
+                obj.sentence = 'My name is Forrest, Forrest Gump';
+            };
+            var forrest = {
+                sentence : 'Stupid is as stupid does'
+            };
+            change(forrest);
+            console.log(forrest.sentence);
+
+      section
+        h3 Passing non-primitives (2)
+        pre.language-javascript
+          code.
+            var change = function(arr) {
+                arr.unshift('Jenny');
+            };
+            var forrestFriends = ['Bubba', 'Lieutenant Dan'];
+            change(forrestFriends);
+            console.log(forrestFriends.length);
+
+      section.conclusion(data-bespoke-state='blue')
+        h2 Essential #6
+        h1.smaller Non-primitives are passed by reference to functions
+
+      section
+        h3 Passing primitives (1)
+        pre.language-javascript
+          code.
+            ...
+
+      section.main
+        h1 Thank you!
+        h3
+          a(href='https://twitter.com/bramus') @bramus
+          img.avatar.avatar--small(src='images/bramus.png')
+
+    // build:js scripts/scripts.js
+    script(src='bower_components/bespoke.js/dist/bespoke.min.js')
+    script(src='bower_components/bespoke-keys/dist/bespoke-keys.min.js')
+    script(src='bower_components/bespoke-touch/dist/bespoke-touch.min.js')
+    script(src='bower_components/bespoke-bullets/dist/bespoke-bullets.min.js')
+    script(src='bower_components/bespoke-scale/dist/bespoke-scale.min.js')
+    script(src='bower_components/bespoke-hash/dist/bespoke-hash.min.js')
+    script(src='bower_components/bespoke-progress/dist/bespoke-progress.min.js')
+    script(src='bower_components/bespoke-state/dist/bespoke-state.min.js')
+    script(src='bower_components/prism/prism.js')
+    script(src='scripts/main.js')
+    // endbuild
