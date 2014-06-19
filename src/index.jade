@@ -454,7 +454,7 @@ html
         h1.evensmaller Non-primitives for which no primitive counterpart exists, except functions, are passed by reference
 
       section.light.logo.logo--why
-        h1 But why?
+        h1 But why; it's an <code>Object</code>, right?
 
       section
         pre.language-javascript
@@ -481,6 +481,50 @@ html
       section.light(data-bespoke-state='green')
         h2 IV. Immediately Invoked Functions
 
+      section
+        h3 Consider this function
+        pre.language-javascript
+          code.
+            var run = function() {
+              alert('Run Forrest, Run');
+            };
+            run();
+      section
+        h3 No harm in adding brackets
+        pre.language-javascript
+          code.
+            var run = (function() {
+              alert('Run Forrest, Run');
+            });
+            run();
+
+      section
+        h3 Internally the code becomes this<br /><em>(pass by value!)</em>
+        pre.language-javascript
+          code.
+            (function() {
+              alert('Run Forrest, Run');
+            })();
+
+      section
+        h3.bullet The function is now
+        ul
+          li anonymous
+          li invoked immediately
+        h3.bullet &rarr; We call this an<br /><em>Immediately Invoked Function Expression</em> (IIFE)
+
+      section
+        h3 IIFE with a parameter
+        pre.language-javascript
+          code.
+            (function(sentence) {
+              alert(sentence);
+            })('Run Forrest, Run');
+
+      section.conclusion(data-bespoke-state='blue')
+        h2 Essential #7
+        h1.smaller Immediately Invoked Function Expressions<br />are nifty
+
       section.light(data-bespoke-state='green')
         h2 V. Function Return Values
 
@@ -488,7 +532,7 @@ html
         h2 VI. Closures
 
       section.light(data-bespoke-state='green')
-        h2 VII. And now all together
+        h2 VII. And now all together &hellip;
 
       section.light(data-bespoke-state='green')
         h2.bullet Want More?
