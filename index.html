@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>JavaScript Roots: Core Language Essentials</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="styles/styles.css"/>
+  </head>
+  <body>
+    <article>
+      <section class="main">
+        <h1>JavaScript Roots<span>Core Language Essentials</span></h1>
+        <h3><a href="https://twitter.com/bramus">@bramus</a></h3><img src="images/bramus.png" class="avatar avatar--small">
+      </section>
+      <section data-bespoke-state="green" class="light">
+        <h2>I. Variable types and values</h2>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>var a;
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>var a;
+console.log(a);
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>console.log(b);
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>var a = 3;
+console.log(typeof a);
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>var b = "bramus";
+console.log(typeof b);
+</code></pre>
+      </section>
+      <section data-bespoke-state="blue" class="conclusion">
+        <h2>Essential #1</h2>
+        <h1>JavaScript is dynamically typed</h1>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>var c = 3;
+c = "bramus";
+console.log(typeof c);
+</code></pre>
+      </section>
+      <section data-bespoke-state="blue" class="conclusion">
+        <h2>Essential #2</h2>
+        <h1>JavaScript is weakly typed</h1>
+      </section>
+      <section>
+        <h3>Side-effect</h3>
+        <pre class="language-javascript"><code>var d = 3 + "bramus";
+console.log(d);</code></pre>
+        <pre class="language-javascript"><code>var d = 3 + "bramus";
+console.log(typeof d);
+</code></pre>
+      </section>
+      <section data-bespoke-state="blue" class="conclusion">
+        <h2>Essential #3</h2>
+        <h1>Coercion is a feature</h1>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>var a = "bramus";
+console.log(typeof a);</code></pre>
+        <pre class="language-javascript"><code>var b = new String("bramus");
+console.log(typeof b);
+</code></pre>
+      </section>
+      <section class="light gif gif--hmmz">
+        <h1>Hmmz&hellip;</h1>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>var a = "bramus"; // string
+console.log(a instanceof String);</code></pre>
+        <pre class="language-javascript"><code>var b = new String("bramus"); // object
+console.log(b instanceof String);
+</code></pre>
+      </section>
+      <section>
+        <h3 class="bullet"><code>string</code> and <code>String</code> are not the same</h3>
+        <ul>
+          <li><code>string</code> is a primitive type</li>
+          <li><code>String</code> is a non-primitive type</li>
+        </ul>
+      </section>
+      <section data-bespoke-state="blue" class="conclusion">
+        <h2>Essential #4</h2>
+        <h1>JavaScript supports primitives and non-primitives</h1>
+      </section>
+      <section>
+        <h3 class="bullet">primitives vs. non-primitives</h3>
+        <div class="columns">
+          <div class="column column-12 bullet">
+            <h4>primitives</h4>
+            <ul>
+              <li>“Just a value”</li>
+            </ul>
+          </div>
+          <div class="column column-12 bullet">
+            <h4>non-primitives</h4>
+            <ul>
+              <li>Contain “just a value”</li>
+              <li>Provide properties and functions regarding that value</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>var b = new String("bramus");
+console.log(b.length);</code></pre>
+        <pre class="language-javascript"><code>var b = new String("bramus");
+console.log(b.toUpperCase());
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>var a = "bramus";
+console.log(a.length);</code></pre>
+        <pre class="language-javascript"><code>var a = "bramus";
+console.log(a.toUpperCase());
+</code></pre>
+      </section>
+      <section data-bespoke-state="blue" class="conclusion">
+        <h2>(Again) Essential #3</h2>
+        <h1>Coercion is a feature</h1>
+      </section>
+      <section>
+        <h3 class="bullet">JavaScript supported types</h3>
+        <div class="columns">
+          <div class="column column-12 bullet">
+            <h4>primitives</h4>
+            <ul>
+              <li><code>string</code></li>
+              <li><code>number</code></li>
+              <li><code>boolean</code></li>
+              <li><code>null</code></li>
+              <li><code>undefined</code></li>
+            </ul>
+          </div>
+          <div class="column column-12 bullet">
+            <h4>non-primitives</h4>
+            <ul>
+              <li><code>String</code></li>
+              <li><code>Number</code></li>
+              <li><code>Boolean</code></li>
+              <li><code>Array</code></li>
+              <li><code>RegExp</code></li>
+              <li><code>Function</code></li>
+              <li><code>Object</code></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h3>All non-primitives extend <code>Object</code> (1/2)</h3>
+        <pre class="language-javascript"><code>var b = new String("bramus");
+console.log(b instanceof String);</code></pre>
+        <pre class="language-javascript"><code>var b = new String("bramus");
+console.log(b instanceof Object);
+</code></pre>
+      </section>
+      <section>
+        <h3>All non-primitives extend <code>Object</code> (2/2)</h3>
+        <pre class="language-javascript"><code>var f = new Function('foo','/* ... */');
+console.log(f instanceof Function);</code></pre>
+        <pre class="language-javascript"><code>var f = new Function('foo','/* ... */');
+console.log(f instanceof Object);
+</code></pre>
+      </section>
+      <section>
+        <h3>All non-primitives their type is <code>object</code> &hellip;</h3>
+        <pre class="language-javascript"><code>var b = new String("bramus");
+console.log(typeof b);</code></pre>
+        <pre class="language-javascript"><code>var a = new Array("bramus","ian");
+console.log(typeof a);
+</code></pre>
+      </section>
+      <section>
+        <h3 class="bullet">&hellip; except for <code>Function</code></h3>
+        <pre class="language-javascript"><code>var f = new Function('foo','/* ... */');
+console.log(typeof f);</code></pre>
+        <footer class="bullet">More on that later ;-)</footer>
+      </section>
+      <section data-bespoke-state="green" class="light">
+        <h2>II. Using literals</h2>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>// String Constructor
+var firstName = new String('Forrest');
+
+// String Literal
+var firstName = 'Forrest';
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>// Number Constructor
+var birthYear = new Number('1945');
+
+// Number Literal
+var birthYear = 1945;
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>// Boolean Constructor
+var isRunning = new Boolean('false');
+
+// Boolean Literal
+var isRunning = true;
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>// RegExp Constructor
+var hasR = new RegExp('r', 'i');
+
+// RegExp Literal
+var hasR = /r/i;
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>// Function Constructor
+var says = new Function('sentence', 'alert(sentence)');
+
+// Function Literal
+var says = function(sentence) { alert(sentence); };
+
+// Function statement
+function says(sentence) { alert(sentence); };
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>// Array Constructor
+var forrestFriends = new Array('Bubba', 'Lieutenant Dan');
+
+// Array Literal
+var forrestFriends = ['Bubba', 'Lieutenant Dan'];
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>// Object Constructor
+var forrest = new Object();
+forrest.firstName = 'Forrest';
+forrest.lastName = 'Gump';
+
+// Object Literal
+var forrest = {
+  firstName : 'Forrest',
+  lastName : 'Gump'
+};
+</code></pre>
+      </section>
+      <section class="light logo logo--sowhat">
+        <h1>so what?</h1>
+      </section>
+      <section>
+        <h3 class="bullet">String Literal Example</h3>
+        <pre class="language-javascript"><code>var firstName = 'Forrest';
+console.log(typeof firstName);</code></pre>
+        <pre class="language-javascript"><code>var firstName = 'Forrest';
+console.log(firstName instanceof String);</code></pre>
+        <footer class="bullet">&rarr; A primitive is returned</footer>
+      </section>
+      <section>
+        <h3 class="bullet">Array Literal Example</h3>
+        <pre class="language-javascript"><code>var forrestFriends = ['Bubba', 'Lieutenant Dan'];
+console.log(typeof forrestFriends);</code></pre>
+        <pre class="language-javascript"><code>var forrestFriends = ['Bubba', 'Lieutenant Dan'];
+console.log(forrestFriends instanceof Array);</code></pre>
+        <footer class="bullet">&rarr; A non-primitive is returned</footer>
+      </section>
+      <section data-bespoke-state="blue" class="conclusion">
+        <h2>Essential #5</h2>
+        <h1 class="smaller">When using literals, JavaScript will try and return the primitive variant</h1>
+      </section>
+      <section data-bespoke-state="green" class="light">
+        <h2>III. Function arguments</h2>
+      </section>
+      <section>
+        <h3>Function arguments: primitives</h3>
+        <pre class="language-javascript"><code>var change = function(sentence) {
+  sentence = 'My name is Forrest, Forrest Gump';
+};
+
+var sentence = 'Stupid is as stupid does';
+console.log(sentence);
+change(sentence);
+// console.log(sentence);
+</code></pre>
+      </section>
+      <section>
+        <h3>Function arguments: primitives</h3>
+        <pre class="language-javascript"><code>var change = function(x) {
+  x++;
+};
+
+var x = 3;
+console.log(x);
+change(x);
+// console.log(x);
+</code></pre>
+      </section>
+      <section data-bespoke-state="blue" class="conclusion">
+        <h2>Essential #6a</h2>
+        <h1>Primitives are passed by value</h1>
+      </section>
+      <section>
+        <h3>Function arguments: non-primitives (1)</h3>
+        <pre class="language-javascript"><code>var change = function(obj) {
+    obj.sentence = 'My name is Forrest, Forrest Gump';
+};
+var forrest = {
+    sentence : 'Stupid is as stupid does'
+};
+console.log(forrest.sentence);
+change(forrest);
+// console.log(forrest.sentence);
+</code></pre>
+      </section>
+      <section>
+        <h3>Function arguments: non-primitives (2)</h3>
+        <pre class="language-javascript"><code>var change = function(arr) {
+    arr.unshift('Jenny');
+};
+var forrestFriends = ['Bubba', 'Lieutenant Dan'];
+console.log(forrestFriends.length);
+change(forrestFriends);
+// console.log(forrestFriends.length);
+</code></pre>
+      </section>
+      <section data-bespoke-state="blue" class="conclusion">
+        <h2>Essential #6b</h2>
+        <h1 class="bullet">Non-primitives are passed by reference</h1>
+        <footer class="bullet">Alas, that's not entirely true ...</footer>
+      </section>
+      <section>
+        <h3>Function arguments: non-primitives (3)</h3>
+        <pre class="language-javascript"><code>var change = function(sentence) {
+  sentence = 'My name is Forrest, Forrest Gump';
+};
+
+var sentence = new String('Stupid is as stupid does');
+console.log(sentence);
+change(sentence);
+// console.log(sentence);
+</code></pre>
+      </section>
+      <section data-bespoke-state="blue" class="conclusion">
+        <h2>Essential #6b</h2>
+        <h1 class="evensmaller bullet">Non-primitives for which no primitive counterpart exists are passed by reference</h1>
+        <footer class="bullet">Again: Alas, that's not entirely true ...</footer>
+      </section>
+      <section>
+        <h3 class="bullet">Function arguments: functions</h3>
+        <pre class="language-javascript"><code>var logs = function(sentence) {
+  console.log(sentence);
+};
+var forrestDoes = function(fn, sentence) {
+  // alert(fn.toString());
+  fn(sentence);
+};
+forrestDoes(logs, 'Stupid is as stupid does');</code></pre>
+        <footer class="bullet">Internally, JavaScript will replace <code>fn</code> with the passed in function</footer>
+      </section>
+      <section>
+        <h3>Function arguments: anonymous functions</h3>
+        <pre class="language-javascript"><code>var forrestDoes = function(fn, sentence) {
+  fn(sentence);
+};
+forrestDoes(function(sentence) {
+  console.log(sentence);
+}, 'Stupid is as stupid does');
+</code></pre>
+      </section>
+      <section>
+        <h3 class="bullet">Function arguments: functions: by val or by ref?</h3>
+        <pre class="language-javascript"><code>function change(fn) {
+  fn = function() {
+    alert('My name is Forrest, Forrest Gump');
+  };
+  return 'changed';
+};
+var says = function() {
+  alert('Stupid is as stupid does');
+};
+
+says();
+console.log(change(says));
+setTimeout(says, 2500); // Intentionally added a timeout.</code></pre>
+        <footer class="bullet">Functions are passed by value</footer>
+      </section>
+      <section data-bespoke-state="blue" class="conclusion">
+        <h2>Essential #6b</h2>
+        <h1 class="evensmaller">Non-primitives for which no primitive counterpart exists, except functions, are passed by reference</h1>
+      </section>
+      <section class="light logo logo--why">
+        <h1>But why; it's an <code>Object</code>, right?</h1>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>var a = new Array('bramus', 'ian');
+console.log(typeof a);</code></pre>
+        <pre class="language-javascript"><code>var s = new String('bramus');
+console.log(typeof s);</code></pre>
+        <pre class="language-javascript"><code>var f = new Function('foo','/* ... */');
+console.log(typeof f);
+</code></pre>
+      </section>
+      <section data-bespoke-state="blue" class="conclusion">
+        <h2>Essential #6, in layman's term</h2>
+        <h1 class="evensmaller">If it's a function, or a primitive variant exists: pass by value.<br />Else: pass by reference.</h1>
+      </section>
+      <section data-bespoke-state="green" class="light">
+        <h2>IV. Closures</h2>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>var firstName = 'Forrest';
+
+var forrestFriends = function() {
+  var friends = ['Bubba', 'Lieutenant Dan'];
+  var friendsCount = function() {
+    return friends.length;
+  };
+  var joinFriends = function() {
+    return firstName + ' has ' + friendsCount() + ' friends';
+  };
+  return joinFriends();
+};
+console.log(forrestFriends());
+</code></pre>
+      </section>
+      <section class="gif gif--notsureif">
+        <h1 class="smaller">How come <code>forrestFriends</code> knows the value of <code>firstName</code>?</h1>
+      </section>
+      <section data-bespoke-state="blue" class="conclusion">
+        <h2>Essential #7</h2>
+        <h1 class="smaller">Whenever you create a function, a closure is also created</h1>
+      </section>
+      <section>
+        <h3 class="bullet">A closure is the glue between the created function and the environment in which it was created</h3>
+        <footer class="bullet">That environment = LexicalEnvironment = the outer scope of the function</footer>
+      </section>
+      <section>
+        <h3>The function will use the closure as a gateway to access the LexicalEnvironment</h3>
+      </section>
+      <section>
+        <h3>LexicalEnvironments can be traversed<br />until the root scope is reached</h3>
+      </section>
+      <section class="gif gif--notsureif-3"></section>
+      <section data-bespoke-state="red" class="conclusion">
+        <h1>Beware, there are some things you must know though</h1>
+      </section>
+      <section>
+        <h3>By value or by reference?</h3>
+        <pre class="language-javascript"><code>var firstName = 'Forrest';
+var forrestFriends = function() {
+    var friends = ['Bubba', 'Lieutenant Dan'];
+    var friendsCount = function() {
+        return friends.length;
+    };
+    var joinFriends = function() {
+        return firstName + ' has ' + friendsCount() + ' friends';
+    };
+    // Change friends, after the function was created
+    friends.unshift('Jenny');
+    return joinFriends();
+};
+console.log(forrestFriends());
+</code></pre>
+      </section>
+      <section data-bespoke-state="blue" class="conclusion">
+        <h2>Essential #8</h2>
+        <h1 class="smaller">Closures refer to outer scope variables by reference</h1>
+      </section>
+      <section>
+        <h3>What if a function has returned?</h3>
+        <pre class="language-javascript"><code>var firstName = 'Forrest';
+var forrestFriends = function() {
+  var friends = ['Bubba', 'Lieutenant Dan'];
+  var friendsCount = function() {
+    return friends.length;
+  };
+  var joinFriends = function() {
+    return firstName + ' has ' + friendsCount() + ' friends';
+  };
+  return joinFriends;
+};
+var ff = forrestFriends();
+
+console.log(ff());
+</code></pre>
+      </section>
+      <section data-bespoke-state="blue" class="conclusion">
+        <h2>Essential #9</h2>
+        <h1 class="evensmaller">Closures have access to outer scope variables even after the function returns</h1>
+      </section>
+      <section>
+        <h3 class="bullet">Closing Example</h3>
+        <pre class="language-javascript"><code>var says = function(what) {
+  return function(verb) {
+    return what + ' ' + verb;
+  };
+};
+var shit = says('Shit');
+console.log(shit('happens'));
+// console.log(says('Shit')('happens'));
+</code></pre>
+        <footer class="bullet">Also known as currying</footer>
+      </section>
+      <section data-bespoke-state="green" class="light">
+        <h2>V. Immediately Invoked Functions</h2>
+      </section>
+      <section>
+        <h3>Consider this function</h3>
+        <pre class="language-javascript"><code>var run = function() {
+  alert('Run Forrest, Run');
+};
+run();</code></pre>
+      </section>
+      <section>
+        <h3>No harm in adding brackets</h3>
+        <pre class="language-javascript"><code>var run = (function() {
+  alert('Run Forrest, Run');
+});
+run();
+</code></pre>
+      </section>
+      <section>
+        <h3>Internally the code becomes this<br /><em>(pass by value!)</em></h3>
+        <pre class="language-javascript"><code>(function() {
+  alert('Run Forrest, Run');
+})();
+</code></pre>
+      </section>
+      <section>
+        <h3 class="bullet">The function is now</h3>
+        <ul>
+          <li>anonymous</li>
+          <li>invoked immediately</li>
+        </ul>
+        <h3 class="bullet">&rarr; We call this an<br /><em>Immediately Invoked Function Expression</em> (IIFE)</h3>
+      </section>
+      <section>
+        <h3>IIFE with a parameter</h3>
+        <pre class="language-javascript"><code>(function(sentence) {
+  alert(sentence);
+})('Run Forrest, Run');
+</code></pre>
+      </section>
+      <section data-bespoke-state="blue" class="conclusion">
+        <h2>Essential #10</h2>
+        <h1 class="smaller">Immediately Invoked Function Expressions<br />are nifty</h1>
+      </section>
+      <section data-bespoke-state="green" class="light">
+        <h2>VI. And now all together &hellip;</h2>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>var el, wrapper = document.getElementById('alltogether-1');
+wrapper.innerHTML = '';
+for (var i = 0; i < 3; i++) { // add three links
+    el = document.createElement('a');
+    el.style.marginRight = '10px';
+    el.innerHTML = 'Link ' + i;
+    el.addEventListener('click', function() {
+      alert('I am link ' + i);
+    });
+    wrapper.appendChild(el);
+};</code></pre>
+        <div id="alltogether-1" class="result"><em>(Run the code example to see the result appear here)</em></div>
+      </section>
+      <section data-bespoke-state="blue" class="conclusion">
+        <h2>Again: Essential #8</h2>
+        <h1 class="smaller">Closures refer to outer scope variables by reference</h1>
+      </section>
+      <section class="light gif gif--brainstorm">
+        <h1>What if we create a local variable?</h1>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>var el, wrapper = document.getElementById('alltogether-2');
+wrapper.innerHTML = '';
+for (var i = 0; i < 3; i++) { // add three links
+    el = document.createElement('a');
+    el.style.marginRight = '10px';
+    el.innerHTML = 'Link ' + i;
+    el.addEventListener('click', function() {
+      var j = i;
+      alert('I am link ' + j);
+    });
+    wrapper.appendChild(el);
+};</code></pre>
+        <div id="alltogether-2" class="result"><em>(Run the code example to see the result appear here)</em></div>
+      </section>
+      <section class="gif gif--notsureif">
+        <h1>Not sure if geekfun or just trolling.</h1>
+      </section>
+      <section>
+        <h3 class="bullet">OK, here are a few tips</h3>
+        <ul>
+          <li>Functions may return functions</li>
+          <li>Functions can be invoked immediately</li>
+          <li>Some types of variables are passed by value to functions</li>
+        </ul>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>var el, wrapper = document.getElementById('alltogether-3');
+wrapper.innerHTML = '';
+for (var i = 0; i < 3; i++) { // add three links
+    el = document.createElement('a');
+    el.style.marginRight = '10px';
+    el.innerHTML = 'Link ' + i;
+    el.addEventListener('click', function() {
+      alert('I am link ' + j);
+    });
+    wrapper.appendChild(el);
+};</code></pre>
+        <div id="alltogether-3" class="result"><em>(Run the code example to see the result appear here)</em></div>
+      </section>
+      <section class="gif gif--fireworks">
+        <h1>Ow yeah!</h1>
+      </section>
+      <section>
+        <pre class="language-javascript"><code>var el, wrapper = document.getElementById('alltogether-4');
+wrapper.innerHTML = '';
+for (var i = 0; i < 3; i++) { // add three links
+    el = document.createElement('a');
+    el.style.marginRight = '10px';
+    el.innerHTML = 'Link ' + i;
+    el.addEventListener('click', function(j) {
+      return function() {
+        alert('I am link ' + j);
+      };
+    }(i));
+    wrapper.appendChild(el);
+};</code></pre>
+        <div id="alltogether-4" class="result"><em>(Run the code example to see the result appear here)</em></div>
+      </section>
+      <section>
+        <h3>Really, if you know <em>why</em> that piece of code works, you know quite a lot about JavaScript</h3>
+      </section>
+      <section data-bespoke-state="green" class="light">
+        <h2 class="bullet">Want More?</h2>
+        <ul>
+          <li>Event capturing and bubbling</li>
+          <li>Event delegation</li>
+          <li>Objects and Inheritance</li>
+          <li><code>Function#call()</code>, <code>Function#apply()</code>, <code>Function#bind()</code></li>
+          <li>Promises</li>
+          <li>&hellip;</li>
+        </ul>
+      </section>
+      <section class="main">
+        <h1>Thank you!</h1>
+        <h3><a href="https://twitter.com/bramus">@bramus</a><img src="images/bramus.png" class="avatar avatar--small"></h3>
+      </section>
+    </article>
+    <script src="scripts/scripts.js"></script>
+  </body>
+</html>
