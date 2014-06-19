@@ -78,7 +78,7 @@ bespoke.plugins.coderun = function(deck) {
         Prism.highlightElement(jsBlock);
 
         // blur block, so we can move to next slide
-        jsBlock.blur();
+        // jsBlock.blur();
 
       }
     }, false);
