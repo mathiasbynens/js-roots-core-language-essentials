@@ -326,6 +326,34 @@ html
         h2 III. Function arguments
 
       section
+        h3 Passing primitives
+        pre.language-javascript
+          code.
+            var change = function(sentence) {
+              sentence = 'My name is Forrest, Forrest Gump';
+            };
+
+            var sentence = 'Stupid is as stupid does';
+            console.log(sentence);
+            change(sentence);
+
+      section
+        h3 Passing primitives
+        pre.language-javascript
+          code.
+            var change = function(x) {
+              x++;
+            };
+
+            var x = 3;
+            console.log(x);
+            change(x);
+
+      section.conclusion(data-bespoke-state='blue')
+        h2 Essential #6a
+        h1 Primitives are passed by value
+
+      section
         h3 Passing non-primitives (1)
         pre.language-javascript
           code.
@@ -335,8 +363,8 @@ html
             var forrest = {
                 sentence : 'Stupid is as stupid does'
             };
-            change(forrest);
             console.log(forrest.sentence);
+            change(forrest);
 
       section
         h3 Passing non-primitives (2)
@@ -346,18 +374,47 @@ html
                 arr.unshift('Jenny');
             };
             var forrestFriends = ['Bubba', 'Lieutenant Dan'];
-            change(forrestFriends);
             console.log(forrestFriends.length);
+            change(forrestFriends);
 
       section.conclusion(data-bespoke-state='blue')
-        h2 Essential #6
-        h1.smaller Non-primitives are passed by reference to functions
+        h2 Essential #6b
+        h1.bullet Non-primitives are passed by reference
+        footer.bullet Alas, that's not entirely true ...
+
 
       section
-        h3 Passing primitives (1)
+        h3 Passing non-primitives (3)
+        pre.language-javascript
+          code.
+            var change = function(sentence) {
+              sentence = 'My name is Forrest, Forrest Gump';
+            };
+
+            var sentence = new String('Stupid is as stupid does');
+            console.log(sentence);
+            change(sentence);
+
+      section.conclusion(data-bespoke-state='blue')
+        h2 Essential #6b
+          small
+            em (incomplete)
+        h1.evensmaller.bullet Non-primitives for which no primitive counterpart exists are passed by reference
+        footer.bullet Again: Alas, that's not entirely true ...
+
+      section
+        h3 Passing functions (1)
         pre.language-javascript
           code.
             ...
+
+      section.conclusion(data-bespoke-state='blue')
+        h2 Essential #6b
+        h1.evensmaller Non-primitives for which no primitive counterpart exists, except functions, are passed by reference
+
+      section.conclusion(data-bespoke-state='blue')
+        h2 Essential #6
+        h1.evensmaller If it's a function, or a primitive variant exists: pass by value.<br />Else: pass by reference.
 
       section.main
         h1 Thank you!
