@@ -537,7 +537,7 @@ html
 
       section.conclusion(data-bespoke-state='blue')
         h2 Essential #8
-        h1.smaller Closures refer to variables by reference
+        h1.smaller Closures refer to outer scope variables by reference
 
       section
         h3 What if a function has returned?
@@ -561,6 +561,21 @@ html
       section.conclusion(data-bespoke-state='blue')
         h2 Essential #9
         h1.evensmaller Closures have access to outer scope variables even after the function returns
+
+      section
+        h3.bullet Closing Example
+        pre.language-javascript
+          code.
+            var says = function(what) {
+              return function(verb) {
+                return what + ' ' + verb;
+              };
+            };
+            var shit = says('Shit');
+            console.log(shit('happens'));
+            // console.log(says('Shit')('happens'));
+
+        footer.bullet Also known as currying
 
       section.light(data-bespoke-state='green')
         h2 V. Immediately Invoked Functions
@@ -610,66 +625,101 @@ html
         h1.smaller Immediately Invoked Function Expressions<br />are nifty
 
       section.light(data-bespoke-state='green')
-        h2 VI. Function Return Values
+        h2 VI. And now all together &hellip;
 
       section
-        h3 Functions can return variables
         pre.language-javascript
           code.
-            var rand = function(max) {
-              return parseInt(Math.random() * max, 10);
+            var el, wrapper = document.getElementById('alltogether-1');
+            wrapper.innerHTML = '';
+            for (var i = 0; i < 3; i++) { // add three links
+                el = document.createElement('a');
+                el.style.marginRight = '10px';
+                el.innerHTML = 'Link ' + i;
+                el.addEventListener('click', function() {
+                  alert('I am link ' + i);
+                });
+                wrapper.appendChild(el);
             };
-            var x = rand(100);
-            console.log(x);
-
-      section
-        h3 Functions can return functions
-        pre.language-javascript
-          code.
-            var reset = function() {
-              var x = 0;
-              return function() {
-                return ++x;
-              }
-            };
-            var count = reset();
-            count();
-            count();
-            console.log(count());
-
-      section
-        h3 Currying (1)
-        pre.language-javascript
-          code.
-            var rand = function(max) {
-              return function(min) {
-                return min + parseInt(Math.random() * (max - min), 10);
-              }
-            };
-            var rand100 = rand(100);
-            var randBetween20And100 = rand100(20);
-            console.log(randBetween20And100);
-
-      section
-        h3 Currying (2)
-        pre.language-javascript
-          code.
-            var says = function(what) {
-              return function(verb) {
-                return what + ' ' + verb;
-              };
-            };
-            var shit = says('Shit');
-            console.log(shit('happens'));
-            // console.log(says('Shit')('happens'));
-
+        .result(id='alltogether-1')
+          em (Run the code example to see the result appear here)
 
       section.conclusion(data-bespoke-state='blue')
-        h2 (Again) Essential #7
-        h1.smaller Whenever you create a function, a closure is also created
+        h2 Again: Essential #8
+        h1.smaller Closures refer to outer scope variables by reference
 
-      section.light(data-bespoke-state='green')
-        h2 VII. And now all together &hellip;
+      section.light.gif.gif--brainstorm
+        h1 What if we create a local variable?
+
+      section
+        pre.language-javascript
+          code.
+            var el, wrapper = document.getElementById('alltogether-2');
+            wrapper.innerHTML = '';
+            for (var i = 0; i < 3; i++) { // add three links
+                el = document.createElement('a');
+                el.style.marginRight = '10px';
+                el.innerHTML = 'Link ' + i;
+                el.addEventListener('click', function() {
+                  var j = i;
+                  alert('I am link ' + j);
+                });
+                wrapper.appendChild(el);
+            };
+        .result(id='alltogether-2')
+          em (Run the code example to see the result appear here)
+
+      section.gif.gif--notsureif
+        h1 Not sure if geekfun or just trolling.
+
+      section
+        h3.bullet OK, here are a few tips
+        ul
+          li Functions may return functions
+          li Functions can be invoked immediately
+          li Some types of variables are passed by value to functions
+
+      section
+        pre.language-javascript
+          code.
+            var el, wrapper = document.getElementById('alltogether-3');
+            wrapper.innerHTML = '';
+            for (var i = 0; i < 3; i++) { // add three links
+                el = document.createElement('a');
+                el.style.marginRight = '10px';
+                el.innerHTML = 'Link ' + i;
+                el.addEventListener('click', function() {
+                  alert('I am link ' + j);
+                });
+                wrapper.appendChild(el);
+            };
+        .result(id='alltogether-3')
+          em (Run the code example to see the result appear here)
+
+      section.gif.gif--fireworks
+        h1 Ow yeah!
+
+      section
+        pre.language-javascript
+          code.
+            var el, wrapper = document.getElementById('alltogether-4');
+            wrapper.innerHTML = '';
+            for (var i = 0; i < 3; i++) { // add three links
+                el = document.createElement('a');
+                el.style.marginRight = '10px';
+                el.innerHTML = 'Link ' + i;
+                el.addEventListener('click', function(j) {
+                  return function() {
+                    alert('I am link ' + j);
+                  };
+                }(i));
+                wrapper.appendChild(el);
+            };
+        .result(id='alltogether-4')
+          em (Run the code example to see the result appear here)
+
+      section
+        h3 Really, if you know <em>why</em> that piece of code works, you know quite a lot about JavaScript
 
       section.light(data-bespoke-state='green')
         h2.bullet Want More?
