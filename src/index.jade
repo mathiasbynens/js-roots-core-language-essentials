@@ -470,10 +470,6 @@ html
             var f = new Function('foo','/* ... */');
             console.log(typeof f);
 
-      //- section.conclusion(data-bespoke-state='blue')
-      //-   h2 Essential #6
-      //-   h1.evensmaller If <code>typeof</code> var equals <code>"object"</code>: pass by reference.<br />Else: pass by value.
-
       section.conclusion(data-bespoke-state='blue')
         h2 Essential #6, in layman's term
         h1.evensmaller If it's a function, or a primitive variant exists: pass by value.<br />Else: pass by reference.
@@ -527,6 +523,44 @@ html
 
       section.light(data-bespoke-state='green')
         h2 V. Function Return Values
+
+      section
+        h3 Functions can return variables
+        pre.language-javascript
+          code.
+            var rand = function(max) {
+              return parseInt(Math.random() * max, 10);
+            };
+            var x = rand(100);
+            console.log(x);
+
+      section
+        h3 Functions can return functions
+        pre.language-javascript
+          code.
+            var reset = function() {
+              var x = 0;
+              return function() {
+                return ++x;
+              }
+            };
+            var count = reset();
+            count();
+            count();
+            console.log(count());
+
+      section
+        h3 Currying
+        pre.language-javascript
+          code.
+            var rand = function(max) {
+              return function() {
+                return parseInt(Math.random() * max, 10);
+              }
+            };
+            var rand100 = rand(100);
+            var x = rand100();
+            console.log(x);
 
       section.light(data-bespoke-state='green')
         h2 VI. Closures
