@@ -291,7 +291,7 @@ html
               lastName : 'Gump'
             };
 
-      section.light.gif.gif--sowhat
+      section.light.logo.logo--sowhat
         h1 so what?
 
       section
@@ -326,7 +326,7 @@ html
         h2 III. Function arguments
 
       section
-        h3 Passing primitives
+        h3 Function arguments: primitives
         pre.language-javascript
           code.
             var change = function(sentence) {
@@ -339,7 +339,7 @@ html
             // console.log(sentence);
 
       section
-        h3 Passing primitives
+        h3 Function arguments: primitives
         pre.language-javascript
           code.
             var change = function(x) {
@@ -356,7 +356,7 @@ html
         h1 Primitives are passed by value
 
       section
-        h3 Passing non-primitives (1)
+        h3 Function arguments: non-primitives (1)
         pre.language-javascript
           code.
             var change = function(obj) {
@@ -370,7 +370,7 @@ html
             // console.log(forrest.sentence);
 
       section
-        h3 Passing non-primitives (2)
+        h3 Function arguments: non-primitives (2)
         pre.language-javascript
           code.
             var change = function(arr) {
@@ -388,7 +388,7 @@ html
 
 
       section
-        h3 Passing non-primitives (3)
+        h3 Function arguments: non-primitives (3)
         pre.language-javascript
           code.
             var change = function(sentence) {
@@ -406,17 +406,76 @@ html
         footer.bullet Again: Alas, that's not entirely true ...
 
       section
-        h3 Passing functions (1)
+        h3.bullet Function arguments: functions
         pre.language-javascript
           code.
-            ...
+            var logs = function(sentence) {
+              console.log(sentence);
+            };
+            var forrestDoes = function(fn, sentence) {
+              // alert(fn.toString());
+              fn(sentence);
+            };
+            forrestDoes(logs, 'Stupid is as stupid does');
+        footer.bullet Internally, JavaScript will replace <code>fn</code> with the passed in function
+
+      section
+        h3 Function arguments: anonymous functions
+        pre.language-javascript
+          code.
+            var forrestDoes = function(fn, sentence) {
+              fn(sentence);
+            };
+            forrestDoes(function(sentence) {
+              console.log(sentence);
+            }, 'Stupid is as stupid does');
+
+      section
+        h3.bullet Function arguments: functions: by val or by ref?
+        pre.language-javascript
+          code.
+            function change(fn) {
+              fn = function() {
+                alert('My name is Forrest, Forrest Gump');
+              };
+              return 'changed';
+            };
+            var says = function() {
+              alert('Stupid is as stupid does');
+            };
+
+            says();
+            console.log(change(says));
+            setTimeout(says, 2500); // Intentionally added a timeout.
+        footer.bullet Functions are passed by value
 
       section.conclusion(data-bespoke-state='blue')
         h2 Essential #6b
         h1.evensmaller Non-primitives for which no primitive counterpart exists, except functions, are passed by reference
 
+      section.light.logo.logo--why
+        h1 But why?
+
+      section
+        pre.language-javascript
+          code.
+            var a = new Array('bramus', 'ian');
+            console.log(typeof a);
+        pre.language-javascript
+          code.
+            var s = new String('bramus');
+            console.log(typeof s);
+        pre.language-javascript
+          code.
+            var f = new Function('foo','/* ... */');
+            console.log(typeof f);
+
+      //- section.conclusion(data-bespoke-state='blue')
+      //-   h2 Essential #6
+      //-   h1.evensmaller If <code>typeof</code> var equals <code>"object"</code>: pass by reference.<br />Else: pass by value.
+
       section.conclusion(data-bespoke-state='blue')
-        h2 Essential #6
+        h2 Essential #6, in layman's term
         h1.evensmaller If it's a function, or a primitive variant exists: pass by value.<br />Else: pass by reference.
 
       section.light(data-bespoke-state='green')
