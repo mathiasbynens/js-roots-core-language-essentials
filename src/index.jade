@@ -477,6 +477,91 @@ html
       section.light(data-bespoke-state='green')
         h2 IV. Closures
 
+      section
+        pre.language-javascript
+          code.
+            var firstName = 'Forrest';
+
+            var forrestFriends = function() {
+              var friends = ['Bubba', 'Lieutenant Dan'];
+              var friendsCount = function() {
+                return friends.length;
+              };
+              var joinFriends = function() {
+                return firstName + ' has ' + friendsCount() + ' friends';
+              };
+              return joinFriends();
+            };
+            console.log(forrestFriends());
+
+      section.gif.gif--notsureif
+        h1.smaller How come <code>forrestFriends</code> knows the value of <code>firstName</code>?
+
+      section.conclusion(data-bespoke-state='blue')
+        h2 Essential #7
+        h1.smaller Whenever you create a function, a closure is also created
+
+      section
+        h3.bullet A closure is the glue between the created function and the environment in which it was created
+        footer.bullet That environment = LexicalEnvironment = the outer scope of the function
+
+      section
+        h3 The function will use the closure as a gateway to access the LexicalEnvironment
+
+      section
+        h3 LexicalEnvironments can be traversed<br />until the root scope is reached
+
+      section.gif.gif--notsureif-3
+
+      section.conclusion(data-bespoke-state='red')
+        h1 Beware, there are some things you must know though
+
+      section
+        h3 By value or by reference?
+        pre.language-javascript
+          code.
+            var firstName = 'Forrest';
+            var forrestFriends = function() {
+                var friends = ['Bubba', 'Lieutenant Dan'];
+                var friendsCount = function() {
+                    return friends.length;
+                };
+                var joinFriends = function() {
+                    return firstName + ' has ' + friendsCount() + ' friends';
+                };
+                // Change friends, after the function was created
+                friends.unshift('Jenny');
+                return joinFriends();
+            };
+            console.log(forrestFriends());
+
+      section.conclusion(data-bespoke-state='blue')
+        h2 Essential #8
+        h1.smaller Closures refer to variables by reference
+
+      section
+        h3 What if a function has returned?
+        pre.language-javascript
+          code.
+            var firstName = 'Forrest';
+            var forrestFriends = function() {
+              var friends = ['Bubba', 'Lieutenant Dan'];
+              var friendsCount = function() {
+                return friends.length;
+              };
+              var joinFriends = function() {
+                return firstName + ' has ' + friendsCount() + ' friends';
+              };
+              return joinFriends;
+            };
+            var ff = forrestFriends();
+
+            console.log(ff());
+
+      section.conclusion(data-bespoke-state='blue')
+        h2 Essential #9
+        h1.evensmaller Closures have access to outer scope variables even after the function returns
+
       section.light(data-bespoke-state='green')
         h2 V. Immediately Invoked Functions
 
@@ -521,7 +606,7 @@ html
             })('Run Forrest, Run');
 
       section.conclusion(data-bespoke-state='blue')
-        h2 Essential #X
+        h2 Essential #10
         h1.smaller Immediately Invoked Function Expressions<br />are nifty
 
       section.light(data-bespoke-state='green')
@@ -578,9 +663,10 @@ html
             console.log(shit('happens'));
             // console.log(says('Shit')('happens'));
 
+
       section.conclusion(data-bespoke-state='blue')
-        h2 Essential #X
-        h1.smaller Currying exists
+        h2 (Again) Essential #7
+        h1.smaller Whenever you create a function, a closure is also created
 
       section.light(data-bespoke-state='green')
         h2 VII. And now all together &hellip;
