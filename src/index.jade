@@ -177,7 +177,7 @@ html
               li <code>Object</code>
 
       section
-        h3 All non-primitives extend <code>Object</code>
+        h3 All non-primitives extend <code>Object</code> (1/2)
         pre.language-javascript
           code.
             var b = new String("bramus");
@@ -188,6 +188,17 @@ html
             console.log(b instanceof Object);
 
       section
+        h3 All non-primitives extend <code>Object</code> (2/2)
+        pre.language-javascript
+          code.
+            var f = new Function('foo','/* ... */');
+            console.log(f instanceof Function);
+        pre.language-javascript
+          code.
+            var f = new Function('foo','/* ... */');
+            console.log(f instanceof Object);
+
+      section
         h3 All non-primitives their type is <code>object</code> &hellip;
         pre.language-javascript
           code.
@@ -195,22 +206,14 @@ html
             console.log(typeof b);
         pre.language-javascript
           code.
-            var a = new Array("bramus","nostradamus");
+            var a = new Array("bramus","ian");
             console.log(typeof a);
 
       section
-        h3 &hellip; except for <code>Function</code>
+        h3.bullet &hellip; except for <code>Function</code>
         pre.language-javascript
           code.
-            var f = function() { /* ... */ }
-            console.log(f instanceof Function);
-        pre.language-javascript
-          code.
-            var f = function() { /* ... */ }
-            console.log(f instanceof Object);
-        pre.language-javascript
-          code.
-            var f = function() { /* ... */ }
+            var f = new Function('foo','/* ... */');
             console.log(typeof f);
         footer.bullet More on that later ;-)
 
@@ -292,28 +295,28 @@ html
         h1 so what?
 
       section
+        h3.bullet String Literal Example
         pre.language-javascript
           code.
-            // String Literal
             var firstName = 'Forrest';
             console.log(typeof firstName);
         pre.language-javascript
           code.
-            // String Literal
             var firstName = 'Forrest';
             console.log(firstName instanceof String);
+        footer.bullet &rarr; A primitive is returned
 
       section
+        h3.bullet Array Literal Example
         pre.language-javascript
           code.
-            // Array Literal
             var forrestFriends = ['Bubba', 'Lieutenant Dan'];
             console.log(typeof forrestFriends);
         pre.language-javascript
           code.
-            // Array Literal
             var forrestFriends = ['Bubba', 'Lieutenant Dan'];
             console.log(forrestFriends instanceof Array);
+        footer.bullet &rarr; A non-primitive is returned
 
       section.conclusion(data-bespoke-state='blue')
         h2 Essential #5
