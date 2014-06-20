@@ -191,11 +191,11 @@ html
         h3 All non-primitives extend <code>Object</code> (2/2)
         pre.language-javascript
           code.
-            var f = new Function('foo','/* ... */');
+            var f = new Function('foo', '/* ... */');
             console.log(f instanceof Function);
         pre.language-javascript
           code.
-            var f = new Function('foo','/* ... */');
+            var f = new Function('foo', '/* ... */');
             console.log(f instanceof Object);
 
       section
@@ -206,7 +206,7 @@ html
             console.log(typeof b);
         pre.language-javascript
           code.
-            var a = new Array("bramus","ian");
+            var a = new Array("bramus", "ian");
             console.log(typeof a);
 
       section
@@ -233,7 +233,7 @@ html
         pre.language-javascript
           code.
             // Number Constructor
-            var birthYear = new Number('1945');
+            var birthYear = new Number(1945);
 
             // Number Literal
             var birthYear = 1945;
@@ -242,7 +242,7 @@ html
         pre.language-javascript
           code.
             // Boolean Constructor
-            var isRunning = new Boolean('false');
+            var isRunning = new Boolean(false);
 
             // Boolean Literal
             var isRunning = true;
@@ -467,7 +467,7 @@ html
             console.log(typeof s);
         pre.language-javascript
           code.
-            var f = new Function('foo','/* ... */');
+            var f = new Function('foo', '/* ... */');
             console.log(typeof f);
 
       section.conclusion(data-bespoke-state='blue')
